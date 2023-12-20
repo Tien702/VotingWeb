@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To Do Decentralized Application</title>
+    <script src="main.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.1.umd.min.js"
+        type="application/javascript"></script>
+	<title>Voting DAPP</title>
+	<link rel="stylesheet" href="./CSS/index.css">
+
+</head>
+<body>
+    <div class = "navbar">
+        <a href="/index.html">Vote</a>
+        <a href="/ListVoters.html">List Voters</a>
+    </div>
+
+    <div class="container">Welcome to the Decentralized Voting Application</div>
+
+    <div>
+        <button onclick="connectMetamask()">Connect Metamask</button>
+        <p id="metamasknotification"></p>
+    </div>
+
+    <div class="container">
+        <span>Bầu cử bên dưới</span>
+        <input type = "number" id ="vote" placeholder="Điền thứ tự của người muốn bầu cử">
+        <button onclick="addVote()">Bầu cử</button>
+        <p id="cand"></p>
+        
+        <button onclick="voteStatus()">Kiểm Tra Trạng Thái Bầu Cử</button>
+        <p id = "status"></p>
+        <p id = "time"></p>
+    </div>
+
+    <div>
+        <button onclick="getAllCandidates()">Danh Sách Ứng Cử Viên</button>
+        <p id="p3"></p>
+    </div>
+
+    <div>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Số thứ tự</th>
+                    <th>Tên của Ứng Cử Viên</th>
+                    <th>Số Phiếu Bầu</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
