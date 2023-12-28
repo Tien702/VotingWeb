@@ -12,50 +12,43 @@
 </head>
 <body>
     <div class = "navbar">
-        <a href="/index.html">Vote</a>
-        <a href="/ListVoters.html">List Voters</a>
+        <a href="/index.html">Bầu Cử</a>
+        <a href="/ListVoters.html">Danh Sách Bầu Cử</a>
     </div>
-
-    <div>
-        <button onclick="connectMetamask()">Connect Metamask</button>
+    <div class="container"><h1>Chào Mừng Đến Với Group 10</h1></div>
+    <div class="Btn">   
+        <button onclick="connectMetamask()">Kết nối Ví MetaMask</button>
         <p id="metamasknotification"></p>
     </div>
-
-    <!-- <div class="container">
-        <form method="POST" action="/vote" enctype="multipart/form-data">
-           
-            
-        </form>
-    </div>  -->
     <div class="container">
-        <span>Add candidate here</span>
-        <input type="text" id="candidateName" placeholder="Add name of candidate ...">
-        <button onclick="addCandidate()">Add Candidate</button>
+        <h3>Thêm Ứng Cử Viên</h3>
+        <input type="text" id="candidateName" placeholder="Tên của ứng cử Viên ...">
+        <button onclick="addCandidate()">Thêm Ứng Cử Viên</button>
     </div>
 
     <div>
         <p id= "votingStatus"></p>
     </div>
 
-    <div>
+    <div class="Btn">
         <button onclick="getAllCandidates()">Danh Sách Ứng Cử</button>
         <p id="p3"></p>
     </div>
 
     <div>
-        <table id="myTable">
-            <thead>
-                <tr>
-                    <th>Index</th>
-                    <th>Candidate name</th>
-                    <th>Candidate votes</th>
-                </tr>
-            </thead>
-            <tbody>
+      <table id="myTable">
+          <thead>
+              <tr>
+                  <th>Số thứ tự</th>
+                  <th>Tên của Ứng Cử Viên</th>
+                  <th>Số Phiếu Bầu</th>
+              </tr>
+          </thead>
+          <tbody>
 
-            </tbody>
-        </table>
-    </div>
+          </tbody>
+      </table>
+  </div>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             // Connect to the local Ethereum node

@@ -213,33 +213,38 @@ const voteStatus = async() => {
     }
 }
 
-const getAllCandidates = async() => {
-    if(WALLET_CONNECTED != 0) {
-        var p3 = document.getElementById("p3");
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        await provider.send("eth_requestAccounts", []);
-        const signer = provider.getSigner();
-        const contractInstance = new ethers.Contract(contractAddress, contractAbi, signer);
-        p3.innerHTML = "Please wait, getting all the candidates from the voting smart contract";
-        var candidates = await contractInstance.getAllVotesOfCandiates();
-        console.log(candidates);
-        var table = document.getElementById("myTable");
+const getAllCandidates = async () => {
+  if (WALLET_CONNECTED != 0) {
+      var p3 = document.getElementById("p3");
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await provider.send("eth_requestAccounts", []);
+      const signer = provider.getSigner();
+      const contractInstance = new ethers.Contract(contractAddress, contractAbi, signer);
+      p3.innerHTML = "Please wait, getting all the candidates from the voting smart contract";
+      var candidates = await contractInstance.getAllVotesOfCandiates();
+      console.log(candidates);
+      var tableBody = document.querySelector("#myTable tbody");
 
-        for (let i = 0; i < candidates.length; i++) {
-            var row = table.insertRow();
-            var idCell = row.insertCell();
-            var descCell = row.insertCell();
-            var statusCell = row.insertCell();
+      // Xóa hết các dòng cũ trong tbody trước khi thêm dữ liệu mới
+      while (tableBody.firstChild) {
+          tableBody.removeChild(tableBody.firstChild);
+      }
 
-            idCell.innerHTML = i;
-            descCell.innerHTML = candidates[i].name;
-            statusCell.innerHTML = candidates[i].voteCount;
-        }
+      for (let i = 0; i < candidates.length; i++) {
+          var row = tableBody.insertRow();
+          var idCell = row.insertCell();
+          var descCell = row.insertCell();
+          var statusCell = row.insertCell();
 
-        p3.innerHTML = "The tasks are updated"
-    }
-    else {
-        var p3 = document.getElementById("p3");
-        p3.innerHTML = "Please connect metamask first";
-    }
+          idCell.innerHTML = i;
+          descCell.innerHTML = candidates[i].name;
+          statusCell.innerHTML = candidates[i].voteCount;
+      }
+
+      p3.innerHTML = "The tasks are updated";
+  } else {
+      var p3 = document.getElementById("p3");
+      p3.innerHTML = "Please connect metamask first";
+  }
 }
+
